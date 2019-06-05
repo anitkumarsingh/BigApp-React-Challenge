@@ -4,6 +4,8 @@ import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 import AppRoutes from './routes/AppRoutes';
 import withRoot from './withRoot';
+import styles from './theme/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 const AppContainer = () => (
   <Router>
@@ -21,8 +23,10 @@ const AppContainer = () => (
 
 const App = () => (
   <Router>
-    <Route
-      component={withRoot(AppContainer)}
+   <Route
+      component={withRoot(
+        withStyles(styles, { withTheme: true })(AppContainer)
+      )}
     />
   </Router>
 );

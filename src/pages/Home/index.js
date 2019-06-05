@@ -3,7 +3,109 @@ import autoBind from 'react-autobind';
 import { connect } from 'react-redux';
 import * as actions from './redux/actions';
 import * as selectors from './redux/reducer';
-import PropTypes from 'prop-types';
+import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
+import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
+import SearchIcon from '@material-ui/icons/Search';
+import { fade } from '@material-ui/core/styles/colorManipulator';
+import { withStyles } from '@material-ui/core/styles';
+
+
+const { SearchBar } = Search;
+
+const columns = [{
+  dataField: 'name',
+  text: 'Full Name'
+}, {
+  dataField: 'phone',
+  text: 'Phone'
+}, 
+{
+  dataField: 'username',
+  text: 'User Name'
+},
+{
+  dataField: 'company[name]',
+  text: 'Company Name'
+}];
+
+const options = {
+  paginationSize: 4,
+  pageStartIndex: 0,
+  firstPageText: 'First',
+  prePageText: 'Back',
+  nextPageText: 'Next',
+  lastPageText: 'Last',
+  nextPageTitle: 'First page',
+  prePageTitle: 'Pre page',
+  firstPageTitle: 'Next page',
+  lastPageTitle: 'Last page',
+  showTotal: false,
+  sizePerPageList: [{
+    text: '3', value: 3
+  }, {
+    text: '5', value: 5
+  },
+  {
+    text: '10', value: 10
+  }
+]
+};
+
+const styles = theme =>({
+  root: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+      display: 'none',
+      [theme.breakpoints.up('sm')]: {
+        display: 'block',
+      },
+    },
+    search: {
+      position: 'relative',
+      float:'right',
+      borderRadius: theme.shape.borderRadius,
+      backgroundColor: fade(theme.palette.common.white, 0.15),
+      '&:hover': {
+        backgroundColor: fade(theme.palette.common.white, 0.25),
+      },
+      marginLeft: 0,
+      width: '100%',
+      [theme.breakpoints.up('sm')]: {
+        marginLeft: theme.spacing(1),
+        width: 'auto',
+      },
+    },
+    searchIcon: {
+      width: theme.spacing(7),
+      height: '100%',
+      position: 'absolute',
+      right:'0',
+      pointerEvents: 'none',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    inputRoot: {
+      color: 'inherit',
+    },
+    inputInput: {
+      padding: theme.spacing(1, 1, 1, 7),
+      transition: theme.transitions.create('width'),
+      width: '100%',
+      [theme.breakpoints.up('sm')]: {
+        width: 120,
+        '&:focus': {
+          width: 200,
+        },
+      },
+    },
+})
 
 class Home extends React.Component{
     constructor(props) {
@@ -15,20 +117,44 @@ class Home extends React.Component{
         console.log('hell')
       }
     render(){
-        const { loading,cities } = this.props;
+        const { loading,cities,classes } = this.props;
         console.log(cities)
         return(
-            <div>
-                <h1>HASDASDADS</h1>
+            <div >
+                {/* <BootstrapTable keyField='id' data={ cities } columns={ columns } pagination={ paginationFactory(options)} /> */}
+                <ToolkitProvider
+                  keyField="id"
+                  data={ cities }
+                  columns={ columns }
+                  search
+                 >
+                    {
+                      props => (
+                        <div>
+                         <div className={classes.search}>
+                        
+                          <div className={classes.searchIcon}>
+                            <SearchIcon />
+                          </div>
+                          <SearchBar { ...props.searchProps }   classes={{
+                              root: classes.inputRoot,
+                              input: classes.inputInput,
+                            }}/>
+                        </div>
+                          <BootstrapTable
+                            { ...props.baseProps }
+                            pagination={ paginationFactory(options)}
+                          />
+                        </div>
+                      )
+                    }
+              </ToolkitProvider>
             </div>
         )
     }
 }
-Home.propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
-  
+
   function mapStateToProps(state) {
     return selectors.getAllValues(state);
   }
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(withStyles(styles)(Home));

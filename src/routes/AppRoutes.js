@@ -8,7 +8,7 @@ class App extends Component {
       const { match } = this.props;
          return (
           <Switch>
-            <Route path={`${match.path}about-us`} component={Home} />
+            <Route path={`${match.path}home`} component={Home} />
             <Route path={`${match.path}/`} component={WelcomeScreen}/>
           </Switch>
       );

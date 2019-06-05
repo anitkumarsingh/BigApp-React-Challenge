@@ -1,9 +1,34 @@
 import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
 
-export default (props) =>{
+const styles = theme =>({
+    root: {
+        flexGrow: 1,
+      },
+    
+      title: {
+        flexGrow: 1,
+        display: 'none',
+        [theme.breakpoints.up('sm')]: {
+          display: 'block',
+        },
+      },
+})
+
+
+export default withStyles(styles)(({classes}) =>{
     return(
-        <div>
-            <h4>Hello from footer bar</h4>
-        </div>
+        <div className={classes.root}>
+            <AppBar position="static">
+                <Toolbar>
+                <Typography className={classes.title} variant="h6" noWrap>
+                    Anit Kumar
+                </Typography>
+                </Toolbar>
+            </AppBar>
+    </div>
     )
-}
+})
