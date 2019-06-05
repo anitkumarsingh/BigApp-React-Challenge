@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import GoogleLogin from 'react-google-login';
 import {Redirect} from 'react-router-dom';
-import GoogleClientID from '../../utility/Config'
+import GoogleClientID from '../../utility/Config';
 import './Welcome.css';
 
 class Welcome extends Component {
@@ -55,7 +55,9 @@ signup(res, type) {
                 <h1 className="heading-primary">
                     <span className="heading-primary--main">Anit</span>
                     <span className="heading-primary--sub-1">Kumar</span>
-                    <span className="heading-primary--sub-2">BigApp React  <span className="heading-primary--sub-2__bold"> Challenge</span></span>
+                    <span className="heading-primary--sub-2">BigApp React  
+                      <span className="heading-primary--sub-2__bold"> Challenge</span>
+                    </span>
                 </h1>
                 <GoogleLogin
                       clientId={GoogleClientID.clientId}

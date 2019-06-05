@@ -1,27 +1,30 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Nav from './components/NavBar/NavBar';
+import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 import AppRoutes from './routes/AppRoutes';
-import './App.css';
+import withRoot from './withRoot';
 
-const AppContainer = ()=>{
-  return(
-    <Router>
-     <Route component={Nav}/>
-     <Switch>
-       <Route component={AppRoutes}/>
-     </Switch>
-     <Route  component={Footer}/>
-    </Router>
-  )
-}
-const App = () =>{
-  return (
-   <Router>
-     <Route component={AppContainer}/>
-    </Router>
-  );
-}
+const AppContainer = () => (
+  <Router>
+    <div>
+      <Route component={NavBar} />
+      <div className="App">
+        <Switch>
+          <Route path="/" component={AppRoutes} />
+        </Switch>
+      </div>
+      <Route component={Footer} />
+    </div>
+  </Router>
+);
+
+const App = () => (
+  <Router>
+    <Route
+      component={withRoot(AppContainer)}
+    />
+  </Router>
+);
 
 export default App;
