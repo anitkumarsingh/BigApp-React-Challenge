@@ -4,24 +4,6 @@ import { connect } from 'react-redux';
 import * as actions from './redux/actions';
 import * as selectors from './redux/reducer';
 import PropTypes from 'prop-types';
-import { TablePagination } from 'react-pagination-table';
-
-const Header = ["Name", "Age", "Size", "Phone", "Gender" ];
-
-const AppTable = ({Header, data}) =>
-    <div>
-        <TablePagination
-            title="TablePagination"
-            subTitle="Sub Title"
-            headers={ Header }
-            data={ data }
-            columns="name.age.size.phone.gender"
-            perPageItemCount={ 5 }
-            totalCount={ data.length }
-            arrayOption={ [["size", 'all', ' ']] }
-        />
-    </div>
- 
 
 class Home extends React.Component{
     constructor(props) {
@@ -38,7 +20,6 @@ class Home extends React.Component{
         return(
             <div>
                 <h1>HASDASDADS</h1>
-                <AppTable Header={Header}/>
             </div>
         )
     }
