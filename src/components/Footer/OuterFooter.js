@@ -4,17 +4,26 @@ import './OuterFooter.css';
 
 const Footer = () =>{
     return(
-        <footer className="colophon">
-        <ul>
-          <li>
-            <iframe title ="asad" className="github-btn" src="https://ghbtns.com/github-btn.html?user=anitkumarsingh&amp;repo=repositories&amp;type=watch&amp;count=true" width="112" height="20"></iframe>
-          </li>
-          <li>
-            <iframe  title ="asds" className="github-btn" src="https://ghbtns.com/github-btn.html?user=anitkumarsingh&amp;repo=repositories&amp;type=fork&amp;count=true" width="105" height="20"></iframe>
-          </li>
+      <div className="social-container">
+        <ul className="social-icons">
+            <li><a href="https://github.com/anitkumarsingh" target="_blank" 
+                   rel="noopener noreferrer"><i className="fa fa-github"></i>
+                </a>
+            </li>
+            <li><a href="https://www.freecodecamp.org/anitkumar" target="_blank" 
+                   rel="noopener noreferrer"><i className="fa fa-google"></i>
+                 </a>
+            </li>
+            <li><a href="https://www.linkedin.com/in/anit-kumar" target="_blank" 
+                   rel="noopener noreferrer"><i className="fa fa-linkedin"></i>
+                  </a>
+              </li>
+            <li><a href="https://github.com/anitkumarsingh" target="_blank" 
+                   rel="noopener noreferrer"><i className="fa fa-codepen"></i>
+                </a>
+            </li>
         </ul>
-        <p style={{fontSize:'20px'}}>© 2019. Anit Kumar.</p>
-      </footer>
+      </div>
     );
 }
 export default Footer;
