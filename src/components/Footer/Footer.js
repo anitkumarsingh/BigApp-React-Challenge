@@ -26,7 +26,7 @@ export default withStyles(styles)(({classes}) =>{
             <AppBar position="static">
                 <Toolbar>
                 <Typography className={classes.title} variant="h6" noWrap>
-                    Develop By Anit Kumar
+                    Develop By Anit Kumar <span role="img" aria-label="happy mode">😄</span>
                 </Typography>
                 </Toolbar>
             </AppBar>
