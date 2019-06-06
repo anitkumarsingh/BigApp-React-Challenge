@@ -21,7 +21,7 @@ const styles = theme =>({
     droppable:{
         right: 0,
         top: 10,
-        borderLeft: '1px dotted'
+        // borderLeft: '1px dotted'
    },
    containerDrag:{
     textAlign: 'center'
@@ -30,6 +30,7 @@ const styles = theme =>({
     backgroundColor: 'yellow',
     margin: '5px auto',
     lineHeight: '3em',
+    borderRadius:'20px'
    },
    btnContainer:{
     display:'block',
@@ -46,20 +47,25 @@ const styles = theme =>({
 class DnD extends React.Component{
     state = {
         tasks: [
-            {name:"Travel",category:"permissions", bgcolor: "yellow"},
-            {name:"Rule Class",category:"permissions", bgcolor: "blue"},
-            {name:"Travel Policy", category:"permissions", bgcolor:"pink"},
+            {name:"Travel",category:"permissions", bgcolor: "skyblue"},
+            {name:"Rule Class",category:"permissions", bgcolor: "skyblue"},
+            {name:"Travel Policy", category:"permissions", bgcolor:"skyblue"},
             {name:"Policy Violations Reasons", category:"permissions", bgcolor:"skyblue"},
             {name:"Travel Rule", category:"permissionGranted", bgcolor:"skyblue"},
             {name:"Travel Vendor Exclusion", category:"permissionGranted", bgcolor:"skyblue"},
             {name:"Contact", category:"permissionGranted", bgcolor:"skyblue"},
             {name:"Travel Discount", category:"permissions", bgcolor:"skyblue"},
-          ]
+          ],
+          selectedTask:''
     }
 
     onDragStart = (event, id) => {
-        console.log('dragstart:',id);
+        // console.log('dragstart:',id);
         event.dataTransfer.setData("id", id);
+        this.setState({selectedTask:id})
+    }
+    transferData = (event) =>{
+        event.dataTransfer.setData("id", this.state.selectedTask);
     }
 
     onDragOver = (event) => {
@@ -68,7 +74,6 @@ class DnD extends React.Component{
 
     onDrop = (event, cat) => {
        let id = event.dataTransfer.getData("id");
-       
        let tasks = this.state.tasks.filter((task) => {
            if (task.name === id) {
                task.category = cat;
@@ -82,7 +87,7 @@ class DnD extends React.Component{
        });
     }
     render(){
-        const { classes } = this.props
+        const { classes } = this.props;
         var tasks = {
             permissions: [],
             permissionGranted: []
@@ -115,7 +120,9 @@ class DnD extends React.Component{
             <Grid item sm={1}>
                 <Paper className={classes.Paper}>
                     <div className={classes.btnContainer}>
-                        <Fab size="small" color="primary" aria-label="Add" className={classes.fab}>
+                        <Fab size="small" color="primary" aria-label="Add" className={classes.fab}
+                         onClick={()=>this.transferData}
+                        >
                             {'>'}
                         </Fab>
                         <Fab size="small" color="secondary" aria-label="Edit" className={classes.fab}>
