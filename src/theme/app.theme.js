@@ -1,4 +1,3 @@
-import color from 'color';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const palette = {
@@ -115,38 +114,6 @@ const theme = createMuiTheme({
       fontSize: '0.816875rem',
       letterSpacing: '2px',
       lineHeight: '16px',
-    },
-  },
-  spacing: {
-    unit: 8,
-  },
-  overrides: {
-    MuiButton: {
-      containedPrimary: {
-        '&:hover': {
-          backgroundColor: color(palette.primary.main)
-            .lighten(palette.action.hoverOpacity),
-            //.hex(),
-          // Reset on touch devices, it doesn't add specificity
-          '@media (hover: none)': {
-            backgroundColor: palette.primary.main,
-          },
-        },
-      },
-    },
-    MuiChip: {
-      root: {
-        maxWidth: '100%',
-      },
-      label: {
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-      },
-    },
-    MuiTypography: {
-      root: {
-        overflowWrap: 'break-word',
-      },
     },
   },
 });

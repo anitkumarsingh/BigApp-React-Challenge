@@ -30,12 +30,12 @@ const columns = [{
 }];
 
 const options = {
-  paginationSize: 4,
-  pageStartIndex: 0,
-  firstPageText: 'First',
-  prePageText: 'Back',
-  nextPageText: 'Next',
-  lastPageText: 'Last',
+  paginationSize: 1,
+  pageStartIndex: 1,
+  firstPageText: '<<',
+  prePageText: '<',
+  nextPageText: '>',
+  lastPageText: '>>',
   nextPageTitle: 'First page',
   prePageTitle: 'Pre page',
   firstPageTitle: 'Next page',
@@ -105,6 +105,9 @@ const styles = theme =>({
         },
       },
     },
+    paginationContainer:{
+      margin:'50px 20px 10px 25px'
+    }
 })
 
 class Home extends React.Component{
@@ -114,14 +117,12 @@ class Home extends React.Component{
   }
     componentDidMount() {
         this.props.dispatch(actions.getData());
-        console.log('hell')
       }
     render(){
         const { loading,cities,classes } = this.props;
         console.log(cities)
         return(
-            <div >
-                {/* <BootstrapTable keyField='id' data={ cities } columns={ columns } pagination={ paginationFactory(options)} /> */}
+            <>
                 <ToolkitProvider
                   keyField="id"
                   data={ cities }
@@ -130,9 +131,8 @@ class Home extends React.Component{
                  >
                     {
                       props => (
-                        <div>
+                        <div className={classes.paginationContainer}>
                          <div className={classes.search}>
-                        
                           <div className={classes.searchIcon}>
                             <SearchIcon />
                           </div>
@@ -149,7 +149,7 @@ class Home extends React.Component{
                       )
                     }
               </ToolkitProvider>
-            </div>
+            </>
         )
     }
 }

@@ -142,70 +142,6 @@ const position = {
   '.pin-t': { top: 0 },
 };
 
-const sizing = theme => {
-  const obj = {};
-  const breakpoints = ['sm', 'md'];
-  breakpoints.forEach(
-    bp =>
-      (obj[`.max-w-${bp}`] = {
-        [theme.breakpoints.up(bp)]: {
-          maxWidth: theme.breakpoints.values[bp],
-        },
-      })
-  );
-
-  return obj;
-};
-
-const spacing = theme => {
-  const props = {
-    p: 'padding',
-    m: 'margin',
-    '-m': 'margin',
-  };
-
-  const sides = {
-    '': '',
-    t: 'Top',
-    r: 'Right',
-    b: 'Bottom',
-    l: 'Left',
-    x: ['Left', 'Right'],
-    y: ['Top', 'Bottom'],
-  };
-
-  const values = [0, 1, 2, 3, 4, 6, 12];
-  const breakpoints = ['sm', 'md'];
-  const obj = {};
-
-  Object.entries(props).forEach(([propKey, propVal]) =>
-    Object.entries(sides).forEach(([sideKey, sideVal]) => {
-      sideVal = Array.isArray(sideVal) ? sideVal : [sideVal];
-      values.reduce((acc, value) => {
-        const spacingValue = (theme.spacing.unit * value) / 2;
-        const styleKey = `${propKey}${sideKey}-${value}`;
-        const dotStyleKey = `.${styleKey}`;
-
-        acc[dotStyleKey] = sideVal.reduce((acc1, s) => {
-          acc1[`${propVal}${s}`] = (propKey[0] === '-' ? -1 : 1) * spacingValue;
-          return acc1;
-        }, {});
-
-        breakpoints.forEach(
-          bp =>
-            (acc[`.${bp}-${styleKey}`] = {
-              [theme.breakpoints.up(bp)]: acc[dotStyleKey],
-            })
-        );
-
-        return acc;
-      }, obj);
-    })
-  );
-
-  return obj;
-};
-
 const typography = {
   '.icon-small': { fontSize: 18 },
 };
@@ -229,8 +165,6 @@ const styles = theme => {
       flex(theme),
       flexOrder(theme),
       position,
-      sizing(theme),
-      spacing(theme),
       typography,
       dimensions
     ),
