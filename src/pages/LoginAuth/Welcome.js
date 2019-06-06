@@ -49,7 +49,7 @@ signup(res, type) {
          return <Redirect to='/home' />
        }
     return (
-      <div>
+      <React.Fragment>
           <div className="hero-bg">
              <div className="header__text-box">
                 <h1 className="heading-primary">
@@ -68,7 +68,7 @@ signup(res, type) {
                       style={{color:'#333'}}/>
             </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
