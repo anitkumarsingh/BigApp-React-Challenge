@@ -8,9 +8,10 @@ const styles = theme =>({
     root: {
         flexGrow: 1,
       },
-    
       title: {
         flexGrow: 1,
+        textAlign:'center',
+        color:'white',
         display: 'none',
         [theme.breakpoints.up('sm')]: {
           display: 'block',
@@ -25,7 +26,7 @@ export default withStyles(styles)(({classes}) =>{
             <AppBar position="static">
                 <Toolbar>
                 <Typography className={classes.title} variant="h6" noWrap>
-                    Anit Kumar
+                    Develop By Anit Kumar
                 </Typography>
                 </Toolbar>
             </AppBar>

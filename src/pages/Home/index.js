@@ -16,18 +16,22 @@ const { SearchBar } = Search;
 
 const columns = [{
   dataField: 'name',
-  text: 'Full Name'
+  text: 'Full Name',
+  sort: true
 }, {
   dataField: 'phone',
-  text: 'Phone'
+  text: 'Phone',
+  sort: true
 }, 
 {
   dataField: 'username',
-  text: 'User Name'
+  text: 'User Name',
+  sort: true
 },
 {
   dataField: 'company[name]',
-  text: 'Company Name'
+  text: 'Company Name',
+  sort: true
 }];
 
 const options = {
@@ -121,7 +125,8 @@ class Home extends React.Component{
       }
     render(){
         const { loading,users,classes } = this.props;
-        console.log(users)
+        console.log(users);
+        console.log(sessionStorage.getItem("userData"));
         if(loading){
          return <Loader/>
         }else{
