@@ -21,7 +21,6 @@ const AppContainer = () => (
       ?(<Route component={Footer} />)
       :(<Route component={OuterFooter} />)
       }
-     
     </div>
   </Router>
 );

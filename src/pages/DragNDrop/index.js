@@ -2,6 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { Paper } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import Fab from '@material-ui/core/Fab';
 
 const styles = theme =>({
     Paper:{
@@ -13,7 +14,7 @@ const styles = theme =>({
         marginLeft:'10px',
         marginRight:'10px'
     },
-    wip:{
+    perm:{
         left: 0,
         top: 10,
     },
@@ -29,8 +30,17 @@ const styles = theme =>({
     backgroundColor: 'yellow',
     margin: '5px auto',
     lineHeight: '3em',
-    
-   }
+   },
+   btnContainer:{
+    display:'block',
+    justifyContent:'center',
+    alignItems:'center',
+    position:'relative',
+    top:160
+   },
+   fab: {
+     marginTop: theme.spacing(1),
+  },
 })
 
 class DnD extends React.Component{
@@ -95,7 +105,7 @@ class DnD extends React.Component{
         <div className={classes.containerDrag}>
             <Grid container>
             <Grid item sm={5}>
-                <Paper className={[classes.wip,classes.Paper].join(' ')}
+                <Paper className={[classes.perm,classes.Paper].join(' ')}
                        onDragOver={(e)=>this.onDragOver(e)}
                        onDrop={(e)=>{this.onDrop(e, "permissions")}}
                 >
@@ -104,7 +114,14 @@ class DnD extends React.Component{
             </Grid>
             <Grid item sm={1}>
                 <Paper className={classes.Paper}>
-                    Middle Panel
+                    <div className={classes.btnContainer}>
+                        <Fab size="small" color="primary" aria-label="Add" className={classes.fab}>
+                            {'>'}
+                        </Fab>
+                        <Fab size="small" color="secondary" aria-label="Edit" className={classes.fab}>
+                            {'<'}
+                        </Fab>
+                    </div>
                 </Paper>
             </Grid>
             <Grid item sm>
