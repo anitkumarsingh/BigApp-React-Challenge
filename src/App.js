@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
+import OuterFooter from'./components/Footer/OuterFooter';
 import AppRoutes from './routes/AppRoutes';
 import withRoot from './withRoot';
 import styles from './theme/styles';
@@ -16,7 +17,11 @@ const AppContainer = () => (
           <Route path="/" component={AppRoutes} />
         </Switch>
       </div>
-      <Route component={Footer} />
+      { sessionStorage.getItem("userData")
+      ?(<Route component={Footer} />)
+      :(<Route component={OuterFooter} />)
+      }
+     
     </div>
   </Router>
 );
