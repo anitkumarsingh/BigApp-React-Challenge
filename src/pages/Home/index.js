@@ -9,6 +9,7 @@ import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import SearchIcon from '@material-ui/icons/Search';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
+import Loader from '../../components/Loader/Loader';
 
 
 const { SearchBar } = Search;
@@ -119,13 +120,16 @@ class Home extends React.Component{
         this.props.dispatch(actions.getData());
       }
     render(){
-        const { loading,cities,classes } = this.props;
-        console.log(cities)
+        const { loading,users,classes } = this.props;
+        console.log(users)
+        if(loading){
+         return <Loader/>
+        }else{
         return(
             <>
                 <ToolkitProvider
                   keyField="id"
-                  data={ cities }
+                  data={ users }
                   columns={ columns }
                   search
                  >
@@ -151,6 +155,7 @@ class Home extends React.Component{
               </ToolkitProvider>
             </>
         )
+      }
     }
 }
 

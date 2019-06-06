@@ -3,7 +3,7 @@ import Immutable from 'seamless-immutable';
 
 const initialState = Immutable({
   loading: true,
-  cities: [],
+  users: [],
 });
 
 export default function reduce(state = initialState, action = {}) {
@@ -17,7 +17,7 @@ export default function reduce(state = initialState, action = {}) {
       return {
         ...state,
         loading: false,
-        cities: action.cities,
+        users: action.users,
       };
     default:
       return state;

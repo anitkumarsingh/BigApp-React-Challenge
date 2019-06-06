@@ -8,11 +8,11 @@ export function getData() {
       type: types.LOADING,
     });
     try {
-      const cities = await api.getUsers();
-      console.log(cities)
+      const users = await api.getUsers();
+      console.log(users)
       dispatch({
         type: types.LOADED,
-        cities,
+        users,
       });
     } catch (error) {
       console.log(error);
