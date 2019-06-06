@@ -26,7 +26,7 @@ export default withStyles(styles)(({classes}) =>{
     <div className={classes.root}>
       <AppBar position="static" >
         <Toolbar>
-          <Link to={links.welcomeScreen()}>
+          <Link to={links.welcomeScreen()} style={{textDecoration:'none'}}>
             <Typography className={classes.title} variant="h6" noWrap>
               React Coding Challenge
             </Typography>

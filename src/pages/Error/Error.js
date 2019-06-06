@@ -2,6 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { fade } from '@material-ui/core/styles/colorManipulator';
 import { Link } from 'react-router-dom';
 import links from '../../utility/Links';
 
@@ -20,19 +21,19 @@ const styles = theme =>({
       },
       button: {
         margin: theme.spacing(1),
-        color:'white'
+        color:'white',
+        '&:hover': {
+            backgroundColor: fade(theme.palette.primary.main, 0.65),
+          },
       },
-      linkText:{
-          textDecoration:'none'
-      }
 })
 
 const Error = ({classes}) =>{
     return(
         <>
-         <Typography className={classes.title} variant="h6" noWrap>Please go back 
-             <span role="img" aria-label="Message">😢</span><br/><br/>
-             <Link to={links.welcomeScreen()} className={classes.linkText}>
+         <Typography className={classes.title} variant="h6" noWrap>Please go back, session has expired  
+            <span role="img" aria-label="Message">😢</span><br/><br/>
+             <Link to={links.welcomeScreen()} style={{textDecoration:'none'}}>
                 <Button variant="contained" color="primary" className={classes.button}>
                     Take me back
                 </Button>
