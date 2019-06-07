@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author": "Anit Kumar",
+  "homepage": "https://react-challenge-by-anit.netlify.com/",
   "dependencies": {
     "@material-ui/core": "^4.0.2",
     "@material-ui/icons": "^4.0.1",

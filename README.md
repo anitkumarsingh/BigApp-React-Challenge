@@ -5,7 +5,7 @@
 ### Technical skills used
 - React
 - React Router
-- Redux
+- React Redux
 - Google o-Auth API
 - API Integration
 - Material ui
@@ -13,6 +13,8 @@
 - Html Css And JavaScript
 - Theming
 - CSS in JS
+- Hosting on cloud platform
+- Session Storage
 
 ## Install
 Install all required depencencies by following command \
@@ -30,7 +32,7 @@ Open [Localhost](http://localhost:3000) to view it in the browser.
 #### Login screen
 ![](screenshots/Screenshot_2019-06-06%20Drag%20and%20Drop%20By%20Anit%20Kumar.png)
 
-#### When user try to access protected route without login or when session has experied
+#### When user try to access protected route without login or when session has expired
 ![](screenshots/Screenshot_2019-06-06%20Drag%20and%20Drop%20By%20Anit%20Kumar(5).png)
 
 #### Initial screen of drag and drop route
