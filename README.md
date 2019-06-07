@@ -2,7 +2,7 @@
 
 ### [Live Demo](https://react-challenge-by-anit.netlify.com/)
 
-### Technical skill used
+### Technical skills used
 - React
 - React Router
 - Redux
