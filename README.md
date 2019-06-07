@@ -1,7 +1,5 @@
 ### BigApp-React-Challenge
 
-### [Live Demo](https://react-challenge-by-anit.netlify.com/)
-
 ### Technical skills used
 - React
 - React Router
