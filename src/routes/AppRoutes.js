@@ -5,32 +5,18 @@ import WelcomeScreen from '../pages/LoginAuth/Welcome';
 import ErrorPage from '../pages/Error/Error';
 import DragNdrop from '../pages/DragNDrop/';
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props => {
-      return sessionStorage.getItem("userData") ? (
-        <Component {...props} />
-      ) : (
-          <ErrorPage {...props}  />
-        );
-    }}
-  />
-);
-
 class App extends Component {
     render() {
       const { match } = this.props;
          return (
           <Switch>
-             <PrivateRoute
-              path={`${match.path}home`}
-              component={Home}
-             />
-           <PrivateRoute
-              path={`${match.path}drag-n-drop`}
-              component={DragNdrop}
-            />
+             { sessionStorage.getItem("userData")
+             ?(<Route path={`${match.path}home`} component={Home} />)
+             :(<Route path={`${match.path}home`} component={ErrorPage}/>)}
+
+             { sessionStorage.getItem("userData")
+             ?(<Route path={`${match.path}drag`} component={DragNdrop} />)
+             :(<Route path={`${match.path}drag`} component={ErrorPage}/>)}
             <Route path={`${match.path}/`} component={WelcomeScreen}/>
           </Switch>
       );
