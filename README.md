@@ -1,4 +1,9 @@
-### BigApp-React-Challenge
+### Front End React Challenge
+
+### What is this ?
+A single page application which demonstrate Login Auth setup, Fetching data from API,Sorting, Searching and implementing pagination, drag and drop. 
+
+### [Live Demo](https://react-challenge-by-anit.netlify.com/)
 
 ### Technical skills used
 - React
