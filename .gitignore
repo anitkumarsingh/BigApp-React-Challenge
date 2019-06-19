@@ -10,10 +10,11 @@
 
 # production
 /build
-/src/utility/Config.js
+.utility/Config.js
 
 # misc
 .DS_Store
+.env
 .env.local
 .env.local.example
 .env.development.local
