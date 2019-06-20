@@ -152,7 +152,7 @@ export default withStyles(styles)(({classes}) =>{
                   onClick={handleProfileMenuOpen}
                   color="inherit"
                 >
-                  {userInfo.checkUser 
+                  {userInfo.checkUser() 
                     ?(<Avatar alt={userInfo.getUserName()} src={userInfo.getUserPic()} 
                       className={classes.bigAvatar} />
                     )                  
