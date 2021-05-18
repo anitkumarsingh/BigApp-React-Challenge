@@ -125,7 +125,7 @@ class Home extends React.Component{
       }
     render(){
         const { loading,users,classes } = this.props;
-        // console.log(users);
+        console.log(users);
         // console.log(JSON.parse(sessionStorage.getItem("userData")).name);
         if(loading){
          return <Loader/>

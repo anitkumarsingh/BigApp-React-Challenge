@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import GoogleLogin from 'react-google-login';
 import {Redirect} from 'react-router-dom';
-import GoogleClientID from '../../utility/Config';
+// import GoogleClientID from '../../utility/Config';
+import Dotenv from 'dotenv';
 import './Welcome.css';
 
 class Welcome extends Component {
@@ -17,19 +18,20 @@ class Welcome extends Component {
 
   }
 
-signup(res, type) {
+signup(res) {
   let postData;
-  if (type === 'google' && res.w3.U3) {
+  if (res.qc.idpId) {
     postData = {
-      name: res.w3.ig,
-      provider: type,
-      email: res.w3.U3,
-      provider_id: res.El,
-      token: res.Zi.access_token,
-      provider_pic: res.w3.Paa
+      name: res.profileObj.name,
+      provider: "google",
+      email: res.profileObj.email,
+      provider_id: res.googleId,
+      token: res.access_token,
+      provider_pic: res.profileObj.imageUrl
     };
      console.log(this.state.postData);
   }
+  Dotenv.config()
 
   if (postData) {
       sessionStorage.setItem("userData", JSON.stringify(postData));
@@ -60,7 +62,7 @@ signup(res, type) {
                     </span>
                 </h1>
                 <GoogleLogin
-                      clientId={GoogleClientID.clientId}
+                      clientId={process.env.REACT_APP_CLIENT_ID}
                       buttonText="Login with Google"
                       onSuccess={this.responseGoogle}
                       onFailure={this.responseGoogle}
